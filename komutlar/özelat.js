@@ -7,11 +7,11 @@ exports.run = (client, message, args) => {
     .setColor(0x2488E7)
     .setTimestamp()
     .setAuthor(message.author.username, message.author.avatarURL)
-    .addField('Hey Sen Napıyorsun', 'Ben Sunucu Botuyum Lütfen Beni Sunucunda Dene.')
+    .addField('Dur BakalÄ±Ä±m!!', 'Suncuda Denemelisin!')
     return message.author.sendEmbed(ozelmesajuyari); }
 
   let mesaj = args.slice(0).join(' ');
-if (mesaj.length < 1) return message.channel.send('Birşey Yazmalısınız');
+if (mesaj.length < 1) return message.channel.send('BirÅŸey YazmalÄ±sÄ±nÄ±z');
 
   message.delete();
 
@@ -25,7 +25,7 @@ if (mesaj.length < 1) return message.channel.send('Birşey Yazmalısınız');
 u.sendEmbed(mesajat)
 })
 
-message.channel.send(`:white_check_mark: Mesaj basariyla **` + client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString() + `** kullanıcıya gonderildi.`);
+message.channel.send(`:white_check_mark: Mesaj basariyla **` + client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString() + `** kullanÄ±cÄ±ya gonderildi.`);
 
 };
 
@@ -37,7 +37,7 @@ exports.conf = {
 };
 
 exports.help = {
-  description: 'Mesajınızı botun bulunduğu sunucudaki insanlara duyurur.',
+  description: 'MesajÄ±nÄ±zÄ± Sunucudaki TÃ¼m KiÅŸilere GÃ¶nderir.',
   name: 'duyur',
-  usage: 'duyur [mesajınız]'
+  usage: 'duyur [mesajÄ±nÄ±z]'
 };
