@@ -1,1 +1,2 @@
-# hostluyoq
+# KaanBOT-NOTOKEN
+NO TOKEN!
