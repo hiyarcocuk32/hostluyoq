@@ -1,4 +1,4 @@
-﻿
+
 const Discord = require('discord.js');
 
 const cevaplar = [
@@ -6,7 +6,6 @@ const cevaplar = [
     "Hayır",
     "Belki",
     "Olabilir",
-    "[Bot] Bot Çöküyor!",
     "Daha sonra tekrar sor",
     "İmkansız"
 ];

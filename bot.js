@@ -1,4 +1,4 @@
-﻿const Discord = require('discord.js');
+const Discord = require('discord.js');
 const client = new Discord.Client();
 const ayarlar = require('./ayarlar.json');
 const chalk = require('chalk');
@@ -16,10 +16,10 @@ client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 fs.readdir('./komutlar/', (err, files) => {
   if (err) console.error(err);
-  log(`${files.length} komut yüklenecek.`);
+  log(`${files.length} komut y�klenecek.`);
   files.forEach(f => {
     let props = require(`./komutlar/${f}`);
-    log(`Yüklenen komut: ${props.help.name}.`);
+    log(`Y�klenen komut: ${props.help.name}.`);
     client.commands.set(props.help.name, props);
     props.conf.aliases.forEach(alias => {
       client.aliases.set(alias, props.help.name);
@@ -78,57 +78,47 @@ client.unload = command => {
   });
 };
 
+client.on('message', async message => {
+  let x = message.guild.roles.find('name', 'rengarenk')
+if (!x) return;
+if (x) {
+ client.setInterval(() => {
+  x.setColor("RANDOM")
+}, 3000)
+ }
+})
+
+let linkEngel = JSON.parse(fs.readFileSync("././jsonlar/linkEngelle.json", "utf8"));
+client.on("message", msg => { 
+if (!linkEngel[msg.guild.id]) return;
+if (linkEngel[msg.guild.id].linkEngel === "kapali") return;
+    if (linkEngel[msg.guild.id].linkEngel === "acik") {
+    var regex = new RegExp(/(discord.gg|http|.gg|.com|.net|.org|invite|�nstagram|Facebook|watch|Youtube|youtube|facebook|instagram)/)
+    if (regex.test(msg.content)== true) {
+    if (!msg.member.hasPermission("ADMINISTRATOR")) {
+      msg.delete()
+       msg.channel.send(`<@${msg.author.id}>`).then(message => message.delete(5000));
+        var e = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setAuthor("Link Engeli!")
+        .setDescription(`Bu sunucuda linkler **${client.user.username}** taraf�ndan engellenmektedir! Link atmana izin vermeyece�im!`)
+        msg.channel.send(e).then(message => message.delete(5000));
+    }
+}
+    }
+});
+
+
+
 client.on('message', msg => {
   if (msg.content.toLowerCase() === 'sa') {
 		if (!msg.guild.member(msg.author).hasPermission("BAN_MEMBERS")) {
-			msg.author.sendMessage('Hey Banlama Yetkisine Sahip Olan AS!'); 
+			msg.author.sendMessage('Aleyk�m selam,  ho� geldin ^^'); 
 		} else {
-		msg.reply('Aleyküm selam, hoş geldin!');
+		msg.reply('Aleyk�m selam, ho� geldin ^^');
 		}
 	}
 });
-
-client.on('message', msg => {
-  if (msg.content.toLowerCase() === 'discord.gg') {
-    msg.delete(30)	  
-    msg.reply('**Reklam Yapmaya Devam Edersen Banlanacaksın!!**');
-  }
-});
-
-client.on("message", msg => {
-	const uyariembed = new Discord.RichEmbed()
-      .setColor(0x00AE86)
-      .setDescription(":crown: " + msg.author + " SyncSBot reklam koruması aktif, reklamcılar ölüceksiniz!:crown:")
-
-const dmembed = new Discord.RichEmbed()
-	.setTitle("Sunucunda " + msg.author.tag + " reklam yapıyor!")
-      .setColor(0x00AE86)
-      .setDescription("&uyar <kişi> komutu ile onu uyarabilir ya da &ban <kişi> komutlarını kullanarak onu sunucudan uzaklaştırabilirsin!")
-	.addField("Kullanıcının mesajı:", "**" + msg.content + "**")
-
-if (msg.content.toLowerCase().match(/(discord\.gg\/)|(discordapp\.com\/invite\/)/g) && msg.channel.type === "text" && msg.channel.permissionsFor(msg.guild.member(client.user)).has("MANAGE_MESSAGES")) {
-	if(msg.member.hasPermission('BAN_MEMBERS')){
-	return;
-	} else {
-    msg.delete(30).then(deletedMsg => {
-     deletedMsg.channel.send(uyariembed)
-	 msg.guild.owner.send(dmembed).catch(e => {
-            console.error(e);
-          });
-        }).catch(e => {
-          console.error(e);
-        });
-      };
-	  };
-    })
-
-client.on('message', msg => {
-  if (msg.content.toLowerCase() === 'amk') {
-    msg.delete(30)  
-    msg.reply('**Küfür Etmeye Devam Edersen Banlanacaksın!!**');
-  }
-});
-
 
 client.elevation = message => {
   if(!message.guild) {
@@ -150,4 +140,4 @@ client.on('error', e => {
   console.log(chalk.bgRed(e.replace(regToken, 'that was redacted')));
 });
 
-client.login(process.env.BOT_TOKEN);
+client.login(ayarlar.token);

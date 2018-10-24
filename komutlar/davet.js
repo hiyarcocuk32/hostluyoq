@@ -7,13 +7,13 @@ exports.run = (client, message) => {
     .setColor(0x00AE86)
     .setTimestamp()
     .setAuthor(message.author.username, message.author.avatarURL)
-    .setDescription('DM Den göderdim MEEEN! :postbox:');
+    .setDescription('Özel mesajların attım adamım! :postbox:');
     message.channel.sendEmbed(ozelmesajkontrol) }
 	const pingozel = new Discord.RichEmbed()
     .setColor(0x00AE86)
     .setTimestamp()
     .setAuthor(message.author.username, message.author.avatarURL)
-    .setDescription('İşte Davet Linkim: https://discordapp.com/oauth2/authorize?client_id=503120083758088193&scope=bot&permissions=2146958591 Buda Bizim Sunucunun :)  https://discord.gg/2Z8qxAQ');
+    .setDescription('İşte Davet Linkim: https://discordapp.com/oauth2/authorize?client_id=502106804826931200&scope=bot&permissions=2146958847 Buda Bizim Sunucunun :)  https://discord.gg/2Z8qxAQ');
     return message.author.sendEmbed(pingozel)
 };
 

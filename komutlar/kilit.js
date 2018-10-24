@@ -1,4 +1,4 @@
-﻿const ms = require('ms');
+const ms = require('ms');
 const ayarlar = require('../ayarlar.json');
 
 var prefix = ayarlar.prefix
@@ -54,6 +54,6 @@ exports.conf = {
 
 exports.help = {
   name: 'kilit',
-  description: 'Kanalı istediğiniz süreyle kitlitler.',
+  description: 'Kanalı istediğiniz kadar süreyle kitler.',
   usage: 'kilit <süre>'
 };
