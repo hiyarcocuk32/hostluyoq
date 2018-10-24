@@ -11,15 +11,15 @@ console.log('Bot hazır ve giriş yaptı.');
 
     var Games = [
 
-        "%yardım Aktif!!!!!!!",
+        "&yardım Aktif!!!!!!!",
     
-        "%roliste KOMUTU AKTİF!!!!",
+        "&roliste KOMUTU AKTİF!!!!",
         
         `${client.users.size} Kullanıcı Adamsınız`,
         
         `${client.guilds.size} Sunucu Adamsınız`,
         
-        `Beni Eklermisin %davet`,
+        `Beni Eklermisin &davet`,
 
 
 
